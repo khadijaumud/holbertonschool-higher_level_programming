@@ -1,0 +1,64 @@
+>>> print_square = __import__('4-print_square').print_square
+
+# size = 4
+>>> print_square(4)
+####
+####
+####
+####
+
+# size = 1
+>>> print_square(1)
+#
+
+# size = 0 prints nothing
+>>> print_square(0)
+
+# size = 10
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+# size is negative integer
+>>> print_square(-1)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+# size is a string
+>>> print_square("4")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# size is None
+>>> print_square(None)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# size is a positive float
+>>> print_square(2.5)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# size is a negative float (TypeError takes priority over ValueError)
+>>> print_square(-2.5)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# Missing argument
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
