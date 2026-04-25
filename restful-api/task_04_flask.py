@@ -2,10 +2,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users = {
-    "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"},
-    "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
-}
+users = {}
 
 @app.route('/')
 def home():
@@ -28,9 +25,10 @@ def get_user(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    data = request.get_json()
-    if not data:
+    if not request.is_json:
         return jsonify({"error": "Invalid JSON"}), 400
+    
+    data = request.get_json()
     
     username = data.get("username")
     if not username:
